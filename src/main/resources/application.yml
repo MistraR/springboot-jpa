@@ -34,7 +34,9 @@ spring:
       use-global-data-source-stat: true
   jpa:
     hibernate:
+          # 自动创建、更新、验证数据库表结构
           ddl-auto: update  # 第一次简表create  后面用update
+    # 显示sql
     show-sql: true
 
 
