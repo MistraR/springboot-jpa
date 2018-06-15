@@ -32,7 +32,7 @@ public class SwaggerConfiguration {
     private ApiInfo apiInfo() {
         //http://localhost:8888/swagger-ui.html
         return new ApiInfoBuilder()
-                .title("小王瑞丶")
+                .title("RoronoaZoro丶小王瑞")
                 .description("----------接口文档----------")
                 .termsOfServiceUrl("www.mistra.wang")
                 .contact(new Contact("WangRui", "", ""))

@@ -15,9 +15,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     User findFirstByUserName(String name);
 
-    @Query(value = "from USER where position =?1")
-    List<User> findByCustomSqlTest1(String position);
+    @Query(value = "from User where position =?1")
+    List<User> selectByCustomSqlTest1(String position);
 
-    @Query(value = "select user_name,nick_name,position from wm_user where position = ?1",nativeQuery = true)
-    List<User> findByCustomSqlTest2(String position);
+    @Query(value = "select * from wm_user where position = ?1",nativeQuery = true)
+    List<User> selectByCustomSqlTest2(String position);
 }
