@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,8 +25,10 @@ import java.util.List;
  */
 @Repository
 public class CommonDAOImpl implements CommonDAO {
+
     @PersistenceContext
     private EntityManager entityManager;
+
     @Autowired
     private DataSource dataSource;
 
@@ -54,7 +57,7 @@ public class CommonDAOImpl implements CommonDAO {
         int count = 0;
         if (helper.isUseNativeSql()) {
             BigInteger v = (BigInteger) countQuery.getSingleResult();
-            v.intValue();
+            count = v.intValue();
         } else {
             Long v = (Long) countQuery.getSingleResult();
             count = v.intValue();
@@ -173,7 +176,12 @@ public class CommonDAOImpl implements CommonDAO {
             //结果集 中列的名称和类型的信息
             ResultSetMetaData rsm = rs.getMetaData();
             int colNumber = rsm.getColumnCount();
-            Field[] fields = clazz.getDeclaredFields();
+            //getDeclaredFields()获得某个类的所有字段,public和protected和private,但是不包括父类字段，getFields()获得某个类的所有的公共public的字段，包括父类中的字段。
+            List<Field> fieldList = new ArrayList<>();
+            fieldList.addAll(Arrays.asList(clazz.getDeclaredFields()));
+            fieldList.addAll(Arrays.asList(clazz.getSuperclass().getDeclaredFields()));
+            Field[] fields = new Field[fieldList.size()];
+            fieldList.toArray(fields);
             while (rs.next()) {
                 W entity = clazz.newInstance();
                 for (int i = 1; i <= colNumber; i++) {

@@ -226,7 +226,7 @@ public class QueryHelper {
 
         }
 
-        LOGGER.info("分页语句：" + execSql);
+        LOGGER.info("拼接完成的Sql语句：" + execSql);
         return execSql;
     }
 
@@ -243,7 +243,7 @@ public class QueryHelper {
         } else {
             buffer.append(fromClause.toString()).append(whereClause.toString());
         }
-        LOGGER.info("查询总数：", buffer.toString());
+        LOGGER.info("查询总数的Sql语句：", buffer.toString());
         return buffer.toString();
     }
 

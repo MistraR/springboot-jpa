@@ -33,6 +33,8 @@ public class BaseEntity  implements Serializable  {
     @ApiParam("更新时间")
     protected Date modifyTime;
 
+    public int test;
+
     public Long getId() {
         return id;
     }

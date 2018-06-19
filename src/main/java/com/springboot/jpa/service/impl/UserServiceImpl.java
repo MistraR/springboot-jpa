@@ -18,6 +18,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.*;
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -56,13 +57,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Pager<User> getPager(PageCondition condition, UserQueryVo userQueryVo) {
-        QueryHelper helper = new QueryHelper(User.class)
+        /*QueryHelper helper = new QueryHelper(User.class)
                 .addCondition(StringUtils.isNoneBlank(userQueryVo.getUserName()), "userName like ", "%" + userQueryVo.getUserName() + "%")
                 .addCondition(StringUtils.isNoneBlank(userQueryVo.getNickName()), "nickName like ", "%" + userQueryVo.getNickName() + "%")
                 .addCondition(StringUtils.isNoneBlank(userQueryVo.getPosition()), "position = ?", userQueryVo.getPosition())
                 .setPageCondition(condition)
-                .useNativeSql(false);
-        Pager<User> pager = commonDAO.findPager(helper);
+                .useNativeSql(false);*/
+        QueryHelper helper = new QueryHelper("id,user_name as userName,nick_name as nickName,position,age"," wm_user")
+                .setPageCondition(condition)
+                .useNativeSql(true);
+        Pager<User> pager = commonDAO.findPager(helper,User.class);
         return pager;
     }
 
