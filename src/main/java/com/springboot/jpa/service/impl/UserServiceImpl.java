@@ -11,7 +11,9 @@ import com.springboot.jpa.vo.UserQueryVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -75,5 +77,35 @@ public class UserServiceImpl implements UserService {
     @Override
     public User jpaName(UserQueryVo userQueryVo) {
         return userRepository.findFirstByUserName(userQueryVo.getUserName());
+    }
+
+    /**
+     * Jpa自带的分页,排序和条件查询测试
+     *
+     * @param condition
+     * @param userQueryVo
+     * @return
+     */
+    @Override
+    public Page<User> jpaPageSelect(PageCondition condition, UserQueryVo userQueryVo) {
+        PageRequest pr = PageRequest.of(condition.getPageNum(), condition.getPageSize(), Sort.Direction.ASC, condition.getOrder());
+        Page<User> users = userRepository.findByNickName(userQueryVo.getNickName(), pr);
+        return users;
+    }
+
+    /**
+     *
+     * @param condition
+     * @param userQueryVo
+     * @return
+     */
+    @Override
+    public Page<User> jpaSpecificationTest1(PageCondition condition, UserQueryVo userQueryVo) {
+        return null;
+    }
+
+    @Override
+    public Page<User> jpaSpecificationTest2(PageCondition condition, UserQueryVo userQueryVo) {
+        return null;
     }
 }

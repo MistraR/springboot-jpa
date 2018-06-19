@@ -77,4 +77,23 @@ public class UserController {
     public User jpaName(UserQueryVo userQueryVo){
         return userService.jpaName(userQueryVo);
     }
+
+    @ApiOperation("Jpa自带的分页,排序和条件查询测试")
+    @GetMapping("/jpaPageSelect")
+    public Page<User> jpaPageSelect(PageCondition condition,UserQueryVo userQueryVo){
+        return userService.jpaPageSelect(condition,userQueryVo);
+    }
+
+    @ApiOperation("JpaSpecificationExecutor条件查询接口测试1")
+    @GetMapping("/jpaSpecification接口测试1")
+    public Page<User> jpaSpecificationTest1(PageCondition condition,UserQueryVo userQueryVo){
+        return userService.jpaSpecificationTest1(condition,userQueryVo);
+    }
+
+    @ApiOperation("JpaSpecificationExecutor条件查询接口测试2")
+    @GetMapping("/jpaSpecification接口测试2")
+    public Page<User> jpaSpecificationTest2(PageCondition condition,UserQueryVo userQueryVo){
+        return userService.jpaSpecificationTest2(condition,userQueryVo);
+    }
 }
+

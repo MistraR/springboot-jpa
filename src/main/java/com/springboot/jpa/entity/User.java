@@ -1,5 +1,6 @@
 package com.springboot.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.jpa.util.hibernate.BaseEntity;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "wm_user")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler","fieldHandler"},ignoreUnknown = true)
 public class User extends BaseEntity {
 
     @ApiParam("用户名")
@@ -25,4 +27,7 @@ public class User extends BaseEntity {
 
     @ApiParam("岗位")
     private String position;
+
+    @ApiParam("年龄")
+    private Integer age;
 }

@@ -8,11 +8,11 @@ import io.swagger.annotations.ApiParam;
  * Describe: 分页查询的参数
  */
 public class PageCondition {
-    @ApiParam("页数")
+    @ApiParam("页数 从0开始")
     private int pageNum = 0;
 
     @ApiParam("每页数量")
-    private int pageSize = 15;
+    private int pageSize = 10;
 
     @ApiParam("排序字段")
     private String order;

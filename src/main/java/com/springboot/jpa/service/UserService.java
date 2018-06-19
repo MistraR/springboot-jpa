@@ -32,4 +32,11 @@ public interface UserService {
     List<User> findByCustomSqlTest2(UserQueryVo userQueryVo);
 
     User jpaName(UserQueryVo userQueryVo);
+
+    Page<User> jpaPageSelect(PageCondition condition,UserQueryVo userQueryVo);
+
+    Page<User> jpaSpecificationTest1(PageCondition condition,UserQueryVo userQueryVo);
+
+    Page<User> jpaSpecificationTest2(PageCondition condition,UserQueryVo userQueryVo);
+
 }
