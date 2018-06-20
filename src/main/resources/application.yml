@@ -1,5 +1,8 @@
 server:
   port: 8080
+  # 文件上传临时目录
+  tomcat:
+        basedir: E:/upload/temp
 # 数据库访问配置,主数据源，默认的
 spring:
   jackson:
