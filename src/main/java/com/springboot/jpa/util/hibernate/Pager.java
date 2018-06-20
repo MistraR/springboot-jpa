@@ -11,7 +11,7 @@ public class Pager<W> {
     /**
      * 当前页 从0开始
      */
-    private Integer number;
+    private Integer pageNumber;
     /**
      * 每页数量
      */
@@ -20,8 +20,8 @@ public class Pager<W> {
     private Integer totalElements;
     private List<W> content;
 
-    public Pager(int number, int pageSize, int totalElements, List<W> content) {
-        this.number = number;
+    public Pager(int pageNumber, int pageSize, int totalElements, List<W> content) {
+        this.pageNumber = pageNumber;
         this.pageSize = pageSize;
         this.totalElements = totalElements;
         this.content = content;
@@ -32,12 +32,12 @@ public class Pager<W> {
         }
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getPageNumber() {
+        return pageNumber;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
     public Integer getPageSize() {
