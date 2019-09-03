@@ -2,7 +2,7 @@ server:
   port: 8080
   # 文件上传临时目录
   tomcat:
-        basedir: E:/upload/temp
+    basedir: E:/upload/temp
 # 数据库访问配置,主数据源，默认的
 spring:
   jackson:
@@ -40,8 +40,8 @@ spring:
       use-global-data-source-stat: true
   jpa:
     hibernate:
-          # 自动创建、更新、验证数据库表结构
-          ddl-auto: update  # 第一次简表create  后面用update
+      # 自动创建、更新、验证数据库表结构
+      ddl-auto: update  # 第一次简表create  后面用update
     # 显示sql
     show-sql: true
 
