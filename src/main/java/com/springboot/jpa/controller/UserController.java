@@ -85,13 +85,13 @@ public class UserController {
     }
 
     @ApiOperation("JpaSpecificationExecutor条件查询接口测试1")
-    @GetMapping("/jpaSpecification接口测试1")
+    @GetMapping("/jpaSpecification1")
     public Page<User> jpaSpecificationTest1(PageCondition condition,UserQueryVo userQueryVo){
         return userService.jpaSpecificationTest1(condition,userQueryVo);
     }
 
     @ApiOperation("JpaSpecificationExecutor条件查询接口测试2")
-    @GetMapping("/jpaSpecification接口测试2")
+    @GetMapping("/jpaSpecification2")
     public Page<User> jpaSpecificationTest2(PageCondition condition,UserQueryVo userQueryVo){
         return userService.jpaSpecificationTest2(condition,userQueryVo);
     }

@@ -20,6 +20,7 @@ public class JpaApplication {
      * 在Spring框架下是通过ApplicationListener监听器来实现的。
      * 在Spring Boot中为CommandLineRunner接口
      * 执行时机为容器启动完成的时候
+     *
      * @param applicationContext
      * @return
      */
@@ -30,7 +31,7 @@ public class JpaApplication {
             String[] beanNames = applicationContext.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                System.out.println(beanName);
+//                System.out.println(beanName);
             }
         };
     }
