@@ -152,6 +152,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> getRelatePage() {
+//        Predicate p1 = cb.like(root.get("name").as(String.class), "%"+um.getName()+"%");  
+//        Predicate p2 = cb.equal(root.get("uuid").as(Integer.class), um.getUuid());  
+//        Predicate p3 = cb.gt(root.get("age").as(Integer.class), um.getAge());  
+//        //把Predicate应用到CriteriaQuery中去,因为还可以给CriteriaQuery添加其他的功能，比如排序、分组啥的  
+//        query.where(cb.and(p3,cb.or(p1,p2)));  
+//        //添加排序的功能  
+//        query.orderBy(cb.desc(root.get("uuid").as(Integer.class)));  
+//        return query.getRestriction();  
+
         Specification<User> specification= new Specification<User>(){
             @Override
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
