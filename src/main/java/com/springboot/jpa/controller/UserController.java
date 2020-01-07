@@ -95,5 +95,17 @@ public class UserController {
     public Page<User> jpaSpecificationTest2(PageCondition condition,UserQueryVo userQueryVo){
         return userService.jpaSpecificationTest2(condition,userQueryVo);
     }
+
+    @ApiOperation("关联查询")
+    @GetMapping("/getRelation")
+    public List<User> getRelation(){
+        return userService.getRelation();
+    }
+
+    @ApiOperation("关联查询-分页")
+    @GetMapping("/getRelatePage")
+    public Page<User> getRelatePage(){
+        return userService.getRelatePage();
+    }
 }
 

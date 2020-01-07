@@ -144,4 +144,24 @@ public class UserServiceImpl implements UserService {
         }, pageRequest);
         return page;
     }
+
+    @Override
+    public List<User> getRelation() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public Page<User> getRelatePage() {
+        Specification<User> specification= new Specification<User>(){
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Predicate predicate = criteriaBuilder.like(root.get("userName").as(String.class),"%索%");
+                criteriaQuery.where(predicate);
+                criteriaQuery.orderBy(criteriaBuilder.desc(root.get("id").as(Integer.class)));
+                return criteriaQuery.getRestriction();
+            }
+        };
+        PageRequest pageRequest = new PageRequest(0,10);
+        return userRepository.findAll(specification,pageRequest);
+    }
 }

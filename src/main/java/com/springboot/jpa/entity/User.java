@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -30,4 +32,8 @@ public class User extends BaseEntity {
 
     @ApiParam("年龄")
     private Integer age;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

@@ -39,4 +39,7 @@ public interface UserService {
 
     Page<User> jpaSpecificationTest2(PageCondition condition,UserQueryVo userQueryVo);
 
+    List<User> getRelation();
+
+    Page<User> getRelatePage();
 }
